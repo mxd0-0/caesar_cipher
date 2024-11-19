@@ -20,20 +20,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
-import androidx.compose.ui.semantics.setText
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.caesarcipherapp.methodes.caesarCipherEncryption
-import androidx.compose.ui.platform.LocalClipboardManager
-
-@Preview(showSystemUi = true)
-@Composable
-private fun Decc() {
-    EncryptionUi()
-}
 
 @Composable
 fun EncryptionUi(modifier: Modifier = Modifier) {
@@ -47,7 +39,7 @@ fun EncryptionUi(modifier: Modifier = Modifier) {
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,

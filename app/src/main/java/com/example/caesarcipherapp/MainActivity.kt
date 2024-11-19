@@ -14,11 +14,9 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -33,7 +31,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             var bottomNavState by rememberSaveable {
-                mutableStateOf(0)
+                mutableIntStateOf(0)
             }
             CaesarCipherAppTheme {
                 Scaffold(
@@ -61,7 +59,7 @@ class MainActivity : ComponentActivity() {
                             listOf(R.drawable.lock, R.drawable.unlock)
 
                         NavigationBar {
-                            items.forEachIndexed { index, item ->
+                            items.forEachIndexed { index, _ ->
                                 NavigationBarItem(
                                     icon = {
                                         Icon(
@@ -78,10 +76,10 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     },
-                    content = { PaddingValues ->
+                    content = { paddingValues ->
                         when (bottomNavState) {
-                            0 -> EncryptionUi(modifier = Modifier.padding(PaddingValues))
-                            1 -> DecryptionUi(modifier = Modifier.padding(PaddingValues))
+                            0 -> EncryptionUi(modifier = Modifier.padding(paddingValues))
+                            1 -> DecryptionUi(modifier = Modifier.padding(paddingValues))
                         }
                     }
                 )

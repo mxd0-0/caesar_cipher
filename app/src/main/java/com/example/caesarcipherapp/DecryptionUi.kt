@@ -34,8 +34,8 @@ fun DecryptionUi(modifier: Modifier = Modifier) {
 
     val errorMessage = "Please Enter Between 0 and 27"
 
-    var DecryptionKey by remember { mutableStateOf("") }
-    val key =  DecryptionKey.toIntOrNull() ?: 0
+    var decryptionKey by remember { mutableStateOf("") }
+    val key =  decryptionKey.toIntOrNull() ?: 0
     var isKeyError by remember { mutableStateOf(false) }
     val result = caesarCipherDecryption(text, key)
     val showResult = remember { mutableStateOf(false) }
@@ -44,7 +44,7 @@ fun DecryptionUi(modifier: Modifier = Modifier) {
 
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -69,15 +69,15 @@ fun DecryptionUi(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
-            value = DecryptionKey,
+            value = decryptionKey,
             onValueChange = {
-                DecryptionKey = it
+                decryptionKey = it
                 isKeyError = !isValidKey(it)
             },
             label = { Text("Enter number from 0 to 27") },
             isError = isKeyError,
             supportingText = { if (isKeyError) Text(errorMessage) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done,),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Done),
         )
         Button(
             onClick = {
