@@ -83,7 +83,7 @@ fun DecryptionUi(modifier: Modifier = Modifier) {
             onClick = {
                 showResult.value = true
             }
-        ) { Text("Encrypt") }
+        ) { Text("Decryption") }
 
         Spacer(modifier = Modifier.height(20.dp))
     }
